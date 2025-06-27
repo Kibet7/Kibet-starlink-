@@ -252,7 +252,74 @@
         }
         
         .modal-body p {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .mpesa-instructions {
+            background-color: #f0f8ff;
+            border-radius: 8px;
+            padding: 15px;
             margin-bottom: 20px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .mpesa-instructions ol {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        .mpesa-instructions li {
+            margin-bottom: 8px;
+        }
+        
+        .till-number {
+            background-color: var(--primary-light);
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            text-align: center;
+            margin: 15px 0;
+            color: var(--primary-dark);
+        }
+        
+        .till-number-display {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .till-number-value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .copy-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .copy-btn i {
+            margin-right: 5px;
+        }
+        
+        .copy-success {
+            color: var(--primary);
+            font-size: 12px;
+            margin-top: 5px;
+            display: none;
         }
         
         .proceed-btn {
@@ -352,7 +419,7 @@
                     </div>
                     <div>
                         <div class="package-price">Ksh 75</div>
-                        <button class="buy-btn" onclick="showPaymentModal('24 Hours - 7GB (Ksh 75)', 'https://short.payhero.co.ke/s/fEkG2MmpmGeRNaCceQKG3V')">
+                        <button class="buy-btn" onclick="showPaymentModal('24 Hours - 7GB', 75)">
                             <i class="fas fa-shopping-cart"></i> Buy
                         </button>
                     </div>
@@ -371,7 +438,7 @@
                     </div>
                     <div>
                         <div class="package-price">Ksh 85</div>
-                        <button class="buy-btn" onclick="showPaymentModal('7 Days - 12GB (Ksh 85)', 'https://short.payhero.co.ke/s/XUjJHSejpTP3v49YUy4M2Z')">
+                        <button class="buy-btn" onclick="showPaymentModal('7 Days - 12GB', 85)">
                             <i class="fas fa-shopping-cart"></i> Buy
                         </button>
                     </div>
@@ -390,7 +457,7 @@
                     </div>
                     <div>
                         <div class="package-price">Ksh 115</div>
-                        <button class="buy-btn" onclick="showPaymentModal('14 Days - 22GB (Ksh 115)', 'https://short.payhero.co.ke/s/NdNVBD3rQcgbNogvT2i3kc')">
+                        <button class="buy-btn" onclick="showPaymentModal('14 Days - 22GB', 115)">
                             <i class="fas fa-shopping-cart"></i> Buy
                         </button>
                     </div>
@@ -409,7 +476,7 @@
                     </div>
                     <div>
                         <div class="package-price">Ksh 125</div>
-                        <button class="buy-btn" onclick="showPaymentModal('21 Days - 35GB (Ksh 125)', 'https://short.payhero.co.ke/s/DasAaRHcxNqdSwgAuFRS42')">
+                        <button class="buy-btn" onclick="showPaymentModal('21 Days - 35GB', 125)">
                             <i class="fas fa-shopping-cart"></i> Buy
                         </button>
                     </div>
@@ -428,7 +495,7 @@
                     </div>
                     <div>
                         <div class="package-price">Ksh 155</div>
-                        <button class="buy-btn" onclick="showPaymentModal('30 Days - 50GB (Ksh 155)', 'https://short.payhero.co.ke/s/DRYRfWGJnGY9pHuTeKbXEd')">
+                        <button class="buy-btn" onclick="showPaymentModal('30 Days - 50GB', 155)">
                             <i class="fas fa-shopping-cart"></i> Buy
                         </button>
                     </div>
@@ -447,7 +514,7 @@
                     </div>
                     <div>
                         <div class="package-price">Ksh 225</div>
-                        <button class="buy-btn" onclick="showPaymentModal('60 DAYS - Unlimited (Ksh 225)', 'https://short.payhero.co.ke/s/oPquj9U59J6svZD5kQkabD')">
+                        <button class="buy-btn" onclick="showPaymentModal('60 DAYS - Unlimited', 225)">
                             <i class="fas fa-shopping-cart"></i> Buy
                         </button>
                     </div>
@@ -474,9 +541,36 @@
             </div>
             <div class="modal-body">
                 <p>You have selected: <strong id="selectedPackage"></strong></p>
-                <button class="proceed-btn" id="proceedPaymentBtn">
-                    <i class="fas fa-arrow-right"></i> Proceed to Payment
-                </button>
+                <p>Amount: <strong id="selectedAmount"></strong></p>
+                
+                <div class="mpesa-instructions">
+                    <p><strong>Lipa na M-Pesa Instructions:</strong></p>
+                    <ol>
+                        <li>Go to M-Pesa on your phone</li>
+                        <li>Select "Lipa na M-Pesa"</li>
+                        <li>Select "Buy Goods and Services"</li>
+                        <li>Enter Till Number: <strong>4160709</strong></li>
+                        <li>Enter the exact amount shown above</li>
+                        <li>Enter your M-Pesa PIN</li>
+                        <li>Confirm all details are correct and send</li>
+                    </ol>
+                    <p>Your package will be activated automatically after payment confirmation.</p>
+                </div>
+                
+                <div class="till-number">
+                    <p>M-Pesa Till Number:</p>
+                    <div class="till-number-display">
+                        <div class="till-number-value">4160709</div>
+                        <button class="copy-btn" onclick="copyTillNumber()">
+                            <i class="far fa-copy"></i> Copy
+                        </button>
+                    </div>
+                    <div id="copySuccess" class="copy-success">
+                        Till number copied to clipboard!
+                    </div>
+                </div>
+                
+                <p>After payment, you'll receive a confirmation SMS. If you encounter any issues, please contact our support.</p>
             </div>
         </div>
     </div>
@@ -488,34 +582,25 @@
     </div>
 
     <script>
-        let paymentUrl = '';
-        
-        function showPaymentModal(packageName, url) {
-            paymentUrl = url;
+        function showPaymentModal(packageName, amount) {
             document.getElementById('selectedPackage').textContent = packageName;
+            document.getElementById('selectedAmount').textContent = 'Ksh ' + amount;
             document.getElementById('paymentModal').style.display = 'flex';
-            
-            // Set up the proceed button
-            document.getElementById('proceedPaymentBtn').onclick = function() {
-                showLoadingAndRedirect();
-            };
         }
         
         function closeModal() {
             document.getElementById('paymentModal').style.display = 'none';
         }
         
-        function showLoadingAndRedirect() {
-            // Show loading overlay
-            document.getElementById('loadingOverlay').style.display = 'flex';
-            
-            // Close the modal
-            closeModal();
-            
-            // Redirect after a short delay to allow the loading screen to show
-            setTimeout(function() {
-                window.location.href = paymentUrl;
-            }, 1500);
+        function copyTillNumber() {
+            const tillNumber = '4160709';
+            navigator.clipboard.writeText(tillNumber).then(() => {
+                const copySuccess = document.getElementById('copySuccess');
+                copySuccess.style.display = 'block';
+                setTimeout(() => {
+                    copySuccess.style.display = 'none';
+                }, 2000);
+            });
         }
         
         // Close modal when clicking outside
@@ -526,4 +611,4 @@
         }
     </script>
 </body>
-</html>
+                    </html>
