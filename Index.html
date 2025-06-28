@@ -513,8 +513,10 @@
             closeModal();
             
             // Redirect after a short delay to allow the loading screen to show
-
-        
+            setTimeout(function() {
+                window.location.href = paymentUrl;
+            }, 1500);
+        }
         
         // Close modal when clicking outside
         window.onclick = function(event) {
