@@ -279,40 +279,62 @@
             margin-right: 8px;
         }
         
-        /* Loading overlay */
-        .loading-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
+        /* Message Form Styles */
+        .message-form {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .message-form h3 {
+            color: var(--gray);
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--gray);
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
             width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
         }
         
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid rgba(255,255,255,0.3);
-            border-top: 5px solid var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
+        .form-group textarea {
+            height: 100px;
+            resize: vertical;
         }
         
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .send-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s;
         }
         
-        .loading-text {
-            color: var(--light);
-            font-size: 18px;
-            margin-top: 10px;
+        .send-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
         }
         
         /* Responsive adjustments */
@@ -458,10 +480,25 @@
         <div class="inquiry">
             <p>In case of inquiry, contact us at:</p>
             <a href="mailto:starrlinkhelp@gmail.com" class="email">email us</a>
-           <a href="https://wa.me/254748605610?text=Hello%20I%20need%20help%20with%20Starlink" class="whatsapp-btn" target="_blank">
-    <i class="fab fa-whatsapp"></i> WhatsApp Support
-</a>
-
+            <a href="https://wa.me/254748605610?text=Hello%20I%20need%20help%20with%20Starlink" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> WhatsApp Support
+            </a>
+        </div>
+        
+        <!-- Leave a Message Form -->
+        <div class="message-form">
+            <h3>Leave us a Message</h3>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required placeholder="Enter your message"></textarea>
+                </div>
+                <button type="submit" class="send-btn">Send Message</button>
+            </form>
         </div>
     </div>
 
@@ -480,12 +517,6 @@
             </div>
         </div>
     </div>
-    
-    <!-- Loading overlay -->
-    <div id="loadingOverlay" class="loading-overlay">
-        <div class="spinner"></div>
-        <div class="loading-text">Processing your request...</div>
-    </div>
 
     <script>
         let paymentUrl = '';
@@ -497,25 +528,12 @@
             
             // Set up the proceed button
             document.getElementById('proceedPaymentBtn').onclick = function() {
-                showLoadingAndRedirect();
+                window.location.href = paymentUrl;
             };
         }
         
         function closeModal() {
             document.getElementById('paymentModal').style.display = 'none';
-        }
-        
-        function showLoadingAndRedirect() {
-            // Show loading overlay
-            document.getElementById('loadingOverlay').style.display = 'flex';
-            
-            // Close the modal
-            closeModal();
-            
-            // Redirect after a short delay to allow the loading screen to show
-            setTimeout(function() {
-                window.location.href = paymentUrl;
-            }, 1500);
         }
         
         // Close modal when clicking outside
@@ -524,6 +542,40 @@
                 closeModal();
             }
         }
+        
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send this data to a server
+            // For now, we'll just show an alert and reset the form
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+            
+            // In a real implementation, you would use fetch or AJAX to send the data:
+            /*
+            fetch('your-server-endpoint', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({email, message}),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Message sent successfully!');
+                document.getElementById('contactForm').reset();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error sending your message. Please try again.');
+            });
+            */
+        });
     </script>
 </body>
 </html>
