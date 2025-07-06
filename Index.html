@@ -279,6 +279,42 @@
             margin-right: 8px;
         }
         
+        /* Loading overlay */
+        .loading-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .loading-text {
+            color: var(--light);
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        
         /* Responsive adjustments */
         @media (max-width: 480px) {
             .header h1 {
@@ -307,7 +343,7 @@
             <!-- Package 1 -->
             <div class="package-card">
                 <div class="package-header">
-                    <span>24 hours - 5GB</span>
+                    <span>24 Hours - 7GB</span>
                 </div>
                 <div class="package-body">
                     <div class="package-features">
@@ -315,17 +351,18 @@
                         <div>Works on all networks</div>
                     </div>
                     <div>
-                        <div class="package-price">Ksh 49</div>
-                        <button class="buy-btn" onclick="showPaymentModal('24 hours - 5GB (Ksh 49)', 'https://short.payhero.co.ke/s/RKnkT9G9LGFft7T5i3pGzU')">
+                        <div class="package-price">Ksh 75</div>
+                        <button class="buy-btn" onclick="showPaymentModal('24 Hours - 7GB (Ksh 75)', 'https://paystack.shop/pay/tcx61tyzya')">
                             <i class="fas fa-shopping-cart"></i> Buy
                         </button>
                     </div>
                 </div>
             </div>
+            
             <!-- Package 2 -->
             <div class="package-card">
                 <div class="package-header">
-                    <span>7 Days - 15GB</span>
+                    <span>7 Days - 12GB</span>
                 </div>
                 <div class="package-body">
                     <div class="package-features">
@@ -333,8 +370,8 @@
                         <div>Works on all networks</div>
                     </div>
                     <div>
-                        <div class="package-price">Ksh 99</div>
-                        <button class="buy-btn" onclick="showPaymentModal('7 Days - 15GB (Ksh 99)', 'https://short.payhero.co.ke/s/SGXupvkR3Lq3tqcCFmrgvf')">
+                        <div class="package-price">Ksh 85</div>
+                        <button class="buy-btn" onclick="showPaymentModal('7 Days - 12GB (Ksh 85)', 'https://paystack.shop/pay/k5-ywq9td5')">
                             <i class="fas fa-shopping-cart"></i> Buy
                         </button>
                     </div>
@@ -344,7 +381,7 @@
             <!-- Package 3 -->
             <div class="package-card">
                 <div class="package-header">
-                    <span>14 Days - 35GB</span>
+                    <span>14 Days - 22GB</span>
                 </div>
                 <div class="package-body">
                     <div class="package-features">
@@ -352,8 +389,8 @@
                         <div>Works on all networks</div>
                     </div>
                     <div>
-                        <div class="package-price">Ksh 175</div>
-                        <button class="buy-btn" onclick="showPaymentModal('14 Days - 35GB (Ksh 175)', 'https://short.payhero.co.ke/s/BVneKgqK69RCvaFdWhQZL3')">
+                        <div class="package-price">Ksh 115</div>
+                        <button class="buy-btn" onclick="showPaymentModal('14 Days - 22GB (Ksh 115)', 'https://paystack.shop/pay/xf-8mw434t')">
                             <i class="fas fa-shopping-cart"></i> Buy
                         </button>
                     </div>
@@ -363,7 +400,7 @@
             <!-- Package 4 -->
             <div class="package-card">
                 <div class="package-header">
-                    <span>21 Days - 50GB</span>
+                    <span>21 Days - 35GB</span>
                 </div>
                 <div class="package-body">
                     <div class="package-features">
@@ -371,8 +408,8 @@
                         <div>Works on all networks</div>
                     </div>
                     <div>
-                        <div class="package-price">Ksh 245</div>
-                        <button class="buy-btn" onclick="showPaymentModal('21 Days - 50GB (Ksh 245)', 'https://short.payhero.co.ke/s/6AuW247hLL3gcmpeKCAcd9')">
+                        <div class="package-price">Ksh 125</div>
+                        <button class="buy-btn" onclick="showPaymentModal('21 Days - 35GB (Ksh 125)', 'https://paystack.shop/pay/x12-x3b8r4')">
                             <i class="fas fa-shopping-cart"></i> Buy
                         </button>
                     </div>
@@ -382,7 +419,7 @@
             <!-- Package 5 -->
             <div class="package-card">
                 <div class="package-header">
-                    <span>30 Days - UNLIMITED</span>
+                    <span>30 Days - 50GB</span>
                 </div>
                 <div class="package-body">
                     <div class="package-features">
@@ -390,14 +427,33 @@
                         <div>Works on all networks</div>
                     </div>
                     <div>
-                        <div class="package-price">Ksh 399</div>
-                        <button class="buy-btn" onclick="showPaymentModal('30 Days - UNLIMITED (Ksh 399)', 'https://short.payhero.co.ke/s/6UHC9MaHUVVfM5MhQWzk5B')">
+                        <div class="package-price">Ksh 155</div>
+                        <button class="buy-btn" onclick="showPaymentModal('30 Days - 50GB (Ksh 155)', 'https://paystack.shop/pay/7y0tpyu0tc')">
                             <i class="fas fa-shopping-cart"></i> Buy
                         </button>
                     </div>
                 </div>
             </div>
             
+            <!-- Package 6 -->
+            <div class="package-card">
+                <div class="package-header">
+                    <span>60 DAYS - Unlimited</span>
+                </div>
+                <div class="package-body">
+                    <div class="package-features">
+                        <div>Unlimited high-speed</div>
+                        <div>Works on all networks</div>
+                    </div>
+                    <div>
+                        <div class="package-price">Ksh 225</div>
+                        <button class="buy-btn" onclick="showPaymentModal('60 DAYS - Unlimited (Ksh 225)', 'https://paystack.shop/pay/1925sgsspl')">
+                            <i class="fas fa-shopping-cart"></i> Buy
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
         
         <div class="inquiry">
             <p>In case of inquiry, contact us at:</p>
@@ -424,6 +480,12 @@
             </div>
         </div>
     </div>
+    
+    <!-- Loading overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <div class="loading-text">Processing your request...</div>
+    </div>
 
     <script>
         let paymentUrl = '';
@@ -435,12 +497,25 @@
             
             // Set up the proceed button
             document.getElementById('proceedPaymentBtn').onclick = function() {
-                window.location.href = paymentUrl;
+                showLoadingAndRedirect();
             };
         }
         
         function closeModal() {
             document.getElementById('paymentModal').style.display = 'none';
+        }
+        
+        function showLoadingAndRedirect() {
+            // Show loading overlay
+            document.getElementById('loadingOverlay').style.display = 'flex';
+            
+            // Close the modal
+            closeModal();
+            
+            // Redirect after a short delay to allow the loading screen to show
+            setTimeout(function() {
+                window.location.href = paymentUrl;
+            }, 1500);
         }
         
         // Close modal when clicking outside
@@ -451,4 +526,4 @@
         }
     </script>
 </body>
-    </html>
+            </html>
