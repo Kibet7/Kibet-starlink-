@@ -315,6 +315,61 @@
             margin-top: 10px;
         }
         
+        /* Payment instructions styles */
+        .payment-instructions {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .payment-instructions ol {
+            padding-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .payment-instructions li {
+            margin-bottom: 8px;
+        }
+        
+        .till-number-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        
+        .till-number {
+            background-color: var(--primary-light);
+            color: var(--primary-dark);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        
+        .copy-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+        
+        .copy-btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .copy-btn i {
+            font-size: 12px;
+        }
+        
         /* Responsive adjustments */
         @media (max-width: 480px) {
             .header h1 {
@@ -352,7 +407,7 @@
                     </div>
                     <div>
                         <div class="package-price">Ksh 75</div>
-                        <button class="buy-btn" onclick="showPaymentModal('24 Hours - 7GB (Ksh 75)', 'https://paystack.shop/pay/tcx61tyzya')">
+                        <button class="buy-btn" onclick="showPaymentModal('24 Hours - 7GB (Ksh 75)', 75)">
                             <i class="fas fa-shopping-cart"></i> Buy
                         </button>
                     </div>
@@ -371,7 +426,7 @@
                     </div>
                     <div>
                         <div class="package-price">Ksh 85</div>
-                        <button class="buy-btn" onclick="showPaymentModal('7 Days - 12GB (Ksh 85)', 'https://paystack.shop/pay/k5-ywq9td5')">
+                        <button class="buy-btn" onclick="showPaymentModal('7 Days - 12GB (Ksh 85)', 85)">
                             <i class="fas fa-shopping-cart"></i> Buy
                         </button>
                     </div>
@@ -390,7 +445,7 @@
                     </div>
                     <div>
                         <div class="package-price">Ksh 115</div>
-                        <button class="buy-btn" onclick="showPaymentModal('14 Days - 22GB (Ksh 115)', 'https://paystack.shop/pay/xf-8mw434t')">
+                        <button class="buy-btn" onclick="showPaymentModal('14 Days - 22GB (Ksh 115)', 115)">
                             <i class="fas fa-shopping-cart"></i> Buy
                         </button>
                     </div>
@@ -409,7 +464,7 @@
                     </div>
                     <div>
                         <div class="package-price">Ksh 125</div>
-                        <button class="buy-btn" onclick="showPaymentModal('21 Days - 35GB (Ksh 125)', 'https://paystack.shop/pay/x12-x3b8r4')">
+                        <button class="buy-btn" onclick="showPaymentModal('21 Days - 35GB (Ksh 125)', 125)">
                             <i class="fas fa-shopping-cart"></i> Buy
                         </button>
                     </div>
@@ -428,7 +483,7 @@
                     </div>
                     <div>
                         <div class="package-price">Ksh 155</div>
-                        <button class="buy-btn" onclick="showPaymentModal('30 Days - 50GB (Ksh 155)', 'https://paystack.shop/pay/7y0tpyu0tc')">
+                        <button class="buy-btn" onclick="showPaymentModal('30 Days - 50GB (Ksh 155)', 155)">
                             <i class="fas fa-shopping-cart"></i> Buy
                         </button>
                     </div>
@@ -447,7 +502,7 @@
                     </div>
                     <div>
                         <div class="package-price">Ksh 225</div>
-                        <button class="buy-btn" onclick="showPaymentModal('60 DAYS - Unlimited (Ksh 225)', 'https://paystack.shop/pay/1925sgsspl')">
+                        <button class="buy-btn" onclick="showPaymentModal('60 DAYS - Unlimited (Ksh 225)', 225)">
                             <i class="fas fa-shopping-cart"></i> Buy
                         </button>
                     </div>
@@ -469,13 +524,35 @@
     <div id="paymentModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Confirm Package</h2>
+                <h2>M-Pesa Payment Instructions</h2>
                 <span class="close-modal" onclick="closeModal()">&times;</span>
             </div>
             <div class="modal-body">
                 <p>You have selected: <strong id="selectedPackage"></strong></p>
-                <button class="proceed-btn" id="proceedPaymentBtn">
-                    <i class="fas fa-arrow-right"></i> Proceed to Payment
+                
+                <div class="payment-instructions">
+                    <p>Please follow these steps to complete your payment:</p>
+                    <ol>
+                        <li>Go to M-Pesa on your phone</li>
+                        <li>Select <strong>Lipa na M-Pesa</strong></li>
+                        <li>Select <strong>Buy Goods and Services</strong></li>
+                        <li>Enter Till Number: 
+                            <div class="till-number-container">
+                                <span class="till-number" id="tillNumber">4160709</span>
+                                <button class="copy-btn" onclick="copyTillNumber()">
+                                    <i class="far fa-copy"></i> Copy
+                                </button>
+                            </div>
+                        </li>
+                        <li>Enter Amount: <span class="till-number" id="paymentAmount"></span></li>
+                        <li>Enter your M-Pesa PIN</li>
+                        <li>Confirm and send payment</li>
+                    </ol>
+                    <p>Your package will be activated automatically after payment confirmation.</p>
+                </div>
+                
+                <button class="proceed-btn" onclick="closeModal()">
+                    <i class="fas fa-check"></i> I Understand
                 </button>
             </div>
         </div>
@@ -488,34 +565,31 @@
     </div>
 
     <script>
-        let paymentUrl = '';
-        
-        function showPaymentModal(packageName, url) {
-            paymentUrl = url;
+        function showPaymentModal(packageName, amount) {
             document.getElementById('selectedPackage').textContent = packageName;
+            document.getElementById('paymentAmount').textContent = 'Ksh ' + amount;
             document.getElementById('paymentModal').style.display = 'flex';
-            
-            // Set up the proceed button
-            document.getElementById('proceedPaymentBtn').onclick = function() {
-                showLoadingAndRedirect();
-            };
         }
         
         function closeModal() {
             document.getElementById('paymentModal').style.display = 'none';
         }
         
-        function showLoadingAndRedirect() {
-            // Show loading overlay
-            document.getElementById('loadingOverlay').style.display = 'flex';
-            
-            // Close the modal
-            closeModal();
-            
-            // Redirect after a short delay to allow the loading screen to show
-            setTimeout(function() {
-                window.location.href = paymentUrl;
-            }, 1500);
+        function copyTillNumber() {
+            const tillNumber = document.getElementById('tillNumber').textContent;
+            navigator.clipboard.writeText(tillNumber).then(() => {
+                // Change button text temporarily
+                const copyBtn = document.querySelector('.copy-btn');
+                const originalHtml = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                
+                // Revert after 2 seconds
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalHtml;
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
         }
         
         // Close modal when clicking outside
@@ -526,4 +600,4 @@
         }
     </script>
 </body>
-            </html>
+</html>
