@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service.starlink.ke</title>
+    <meta name="description" content="Purchase Starlink internet packages for Kenya. High-speed satellite internet for home and business.">
+    <title>Starlink Internet Packages | Kenya</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #148122;
-            --primary-dark: #0f7b0f;
-            --primary-light: #e0f7da;
+            --primary: #005288;
+            --primary-dark: #003b5e;
+            --primary-light: #e6f2fa;
             --accent: #25D366;
             --dark: #000000;
             --light: #ffffff;
             --gray: #444444;
+            --light-gray: #f5f5f5;
         }
         
         * {
@@ -32,16 +34,34 @@
             justify-content: center;
             align-items: center;
             padding: 20px;
+            background-image: url('https://images.unsplash.com/photo-1623862735465-7c2a574a08e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 0;
         }
         
         .container {
             background-color: var(--light);
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
             width: 100%;
             max-width: 500px;
             overflow: hidden;
             margin: 20px 0;
+            position: relative;
+            z-index: 1;
         }
         
         .header {
@@ -49,11 +69,33 @@
             padding: 20px;
             text-align: center;
             color: var(--light);
+            position: relative;
+        }
+        
+        .logo {
+            width: 120px;
+            margin-bottom: 10px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .satellite-icon {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            color: var(--light);
+            opacity: 0.8;
         }
         
         .header h1 {
-            font-size: 26px;
+            font-size: 24px;
             margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
         }
         
         .payment-info {
@@ -64,7 +106,8 @@
             font-weight: 600;
             margin: 0 20px 20px;
             text-align: center;
-            font-size: 16px;
+            font-size: 14px;
+            border-left: 4px solid var(--primary);
         }
         
         .packages-container {
@@ -74,7 +117,7 @@
         .package-card {
             background-color: var(--light);
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             margin-bottom: 15px;
             overflow: hidden;
             border: 1px solid #e0e0e0;
@@ -83,15 +126,16 @@
         
         .package-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 20px rgba(0, 82, 136, 0.2);
+            border-color: var(--primary);
         }
         
         .package-header {
-            background-color: var(--primary);
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
             color: var(--light);
             padding: 15px;
             font-weight: 600;
-            font-size: 18px;
+            font-size: 16px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -108,18 +152,32 @@
             font-size: 22px;
             font-weight: 700;
             color: var(--primary);
+            margin-bottom: 5px;
         }
         
-        .package-features {
+        .package-price small {
             font-size: 14px;
+            font-weight: 400;
             color: var(--gray);
         }
         
+        .package-features {
+            font-size: 13px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+        
+        .package-features i {
+            color: var(--primary);
+            margin-right: 5px;
+            font-size: 12px;
+        }
+        
         .buy-btn {
-            background-color: var(--primary);
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
             color: var(--light);
             border: none;
-            padding: 10px 15px;
+            padding: 10px 20px;
             border-radius: 8px;
             font-weight: 600;
             cursor: pointer;
@@ -127,11 +185,14 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 14px;
+            min-width: 100px;
         }
         
         .buy-btn:hover {
-            background-color: var(--primary-dark);
+            background: linear-gradient(to right, var(--primary-dark), var(--primary));
             transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 82, 136, 0.3);
         }
         
         .buy-btn i {
@@ -139,29 +200,41 @@
         }
         
         .inquiry {
-            background-color: #f8f9fa;
-            padding: 15px;
+            background-color: var(--light-gray);
+            padding: 20px;
             margin: 20px;
             border-radius: 10px;
             text-align: center;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+            border-top: 3px solid var(--primary);
         }
         
         .inquiry p {
             color: var(--gray);
             margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .contact-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
         
         .email {
+            background-color: var(--light);
             color: var(--primary);
             font-weight: 600;
             text-decoration: none;
             transition: all 0.2s;
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            font-size: 13px;
         }
         
         .email:hover {
             color: var(--primary-dark);
-            text-decoration: underline;
+            border-color: var(--primary);
         }
         
         .whatsapp-btn {
@@ -174,17 +247,26 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin-top: 10px;
             transition: all 0.3s;
+            font-size: 14px;
         }
         
         .whatsapp-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(37, 211, 102, 0.3);
+            background-color: #128C7E;
         }
         
         .whatsapp-btn i {
             margin-right: 8px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 12px;
+            color: var(--gray);
+            border-top: 1px solid #eee;
         }
         
         /* Modal styles */
@@ -223,7 +305,7 @@
         }
         
         .modal-header {
-            background-color: var(--primary);
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
             color: var(--light);
             padding: 15px;
             display: flex;
@@ -232,7 +314,7 @@
         }
         
         .modal-header h2 {
-            font-size: 20px;
+            font-size: 18px;
         }
         
         .close-modal {
@@ -253,10 +335,11 @@
         
         .modal-body p {
             margin-bottom: 20px;
+            font-size: 14px;
         }
         
         .proceed-btn {
-            background-color: var(--primary);
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
             color: var(--light);
             border: none;
             padding: 12px;
@@ -271,7 +354,7 @@
         }
         
         .proceed-btn:hover {
-            background-color: var(--primary-dark);
+            background: linear-gradient(to right, var(--primary-dark), var(--primary));
             transform: translateY(-2px);
         }
         
@@ -279,110 +362,29 @@
             margin-right: 8px;
         }
         
-        /* Loading overlay */
-        .loading-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid rgba(255,255,255,0.3);
-            border-top: 5px solid var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .loading-text {
-            color: var(--light);
-            font-size: 18px;
-            margin-top: 10px;
-        }
-        
-        /* Payment instructions styles */
-        .payment-instructions {
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--primary);
-        }
-        
-        .payment-instructions ol {
-            padding-left: 20px;
-            margin-top: 10px;
-        }
-        
-        .payment-instructions li {
-            margin-bottom: 8px;
-        }
-        
-        .till-number-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 10px 0;
-        }
-        
-        .till-number {
-            background-color: var(--primary-light);
-            color: var(--primary-dark);
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-weight: bold;
-            display: inline-block;
-        }
-        
-        .copy-btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            font-size: 14px;
-        }
-        
-        .copy-btn:hover {
-            background-color: var(--primary-dark);
-        }
-        
-        .copy-btn i {
-            font-size: 12px;
-        }
-        
         /* Responsive adjustments */
         @media (max-width: 480px) {
             .header h1 {
-                font-size: 22px;
+                font-size: 20px;
             }
             
             .package-header {
-                font-size: 16px;
+                font-size: 14px;
                 padding: 12px;
             }
             
             .package-price {
-                font-size: 20px;
+                font-size: 18px;
+            }
+            
+            .package-features {
+                font-size: 12px;
+            }
+            
+            .buy-btn {
+                padding: 8px 15px;
+                font-size: 13px;
+                min-width: 80px;
             }
         }
     </style>
@@ -390,8 +392,11 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Select a Package</h1>
-            <div class="payment-info">Starlink Home <i>(Safaricom, Airtel, Telcom)</i></div>
+            <i class="fas fa-satellite-dish satellite-icon"></i>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Starlink_Logo.svg/1200px-Starlink_Logo.svg.png" alt="Starlink " class="logo">
+            <h1>Starlink Internet Packages</h1>
+            <p>High-speed satellite internet for Kenya</p>
+            <div class="payment-info">Starlink Home <i>(Safaricom, Airtel, Telkom)</i></div>
         </div>
         
         <div class="packages-container">
@@ -399,16 +404,18 @@
             <div class="package-card">
                 <div class="package-header">
                     <span>24 Hours - 7GB</span>
+                    <i class="fas fa-bolt"></i>
                 </div>
                 <div class="package-body">
                     <div class="package-features">
-                        <div>High-speed internet</div>
-                        <div>Works on all networks</div>
+                        <div><i class="fas fa-check"></i> High-speed satellite internet</div>
+                        <div><i class="fas fa-check"></i> Works on all networks</div>
+                        <div><i class="fas fa-check"></i> Low latency connection</div>
                     </div>
                     <div>
-                        <div class="package-price">Ksh 75</div>
-                        <button class="buy-btn" onclick="showPaymentModal('24 Hours - 7GB (Ksh 75)', 75)">
-                            <i class="fas fa-shopping-cart"></i> Buy
+                        <div class="package-price">Ksh 75 <small>+ fees</small></div>
+                        <button class="buy-btn" onclick="confirmPayment('24 Hours - 7GB (Ksh 75)', 'https://paystack.shop/pay/tcx61tyzya')">
+                            <i class="fas fa-shopping-cart"></i> Buy Now
                         </button>
                     </div>
                 </div>
@@ -418,16 +425,18 @@
             <div class="package-card">
                 <div class="package-header">
                     <span>7 Days - 12GB</span>
+                    <i class="fas fa-star"></i>
                 </div>
                 <div class="package-body">
                     <div class="package-features">
-                        <div>High-speed internet</div>
-                        <div>Works on all networks</div>
+                        <div><i class="fas fa-check"></i> High-speed satellite internet</div>
+                        <div><i class="fas fa-check"></i> Works on all networks</div>
+                        <div><i class="fas fa-check"></i> Low latency connection</div>
                     </div>
                     <div>
-                        <div class="package-price">Ksh 85</div>
-                        <button class="buy-btn" onclick="showPaymentModal('7 Days - 12GB (Ksh 85)', 85)">
-                            <i class="fas fa-shopping-cart"></i> Buy
+                        <div class="package-price">Ksh 85 <small>+ fees</small></div>
+                        <button class="buy-btn" onclick="confirmPayment('7 Days - 12GB (Ksh 85)', 'https://paystack.shop/pay/k5-ywq9td5')">
+                            <i class="fas fa-shopping-cart"></i> Buy Now
                         </button>
                     </div>
                 </div>
@@ -437,16 +446,18 @@
             <div class="package-card">
                 <div class="package-header">
                     <span>14 Days - 22GB</span>
+                    <i class="fas fa-rocket"></i>
                 </div>
                 <div class="package-body">
                     <div class="package-features">
-                        <div>High-speed internet</div>
-                        <div>Works on all networks</div>
+                        <div><i class="fas fa-check"></i> High-speed satellite internet</div>
+                        <div><i class="fas fa-check"></i> Works on all networks</div>
+                        <div><i class="fas fa-check"></i> Low latency connection</div>
                     </div>
                     <div>
-                        <div class="package-price">Ksh 115</div>
-                        <button class="buy-btn" onclick="showPaymentModal('14 Days - 22GB (Ksh 115)', 115)">
-                            <i class="fas fa-shopping-cart"></i> Buy
+                        <div class="package-price">Ksh 115 <small>+ fees</small></div>
+                        <button class="buy-btn" onclick="confirmPayment('14 Days - 22GB (Ksh 115)', 'https://paystack.shop/pay/xf-8mw434t')">
+                            <i class="fas fa-shopping-cart"></i> Buy Now
                         </button>
                     </div>
                 </div>
@@ -456,16 +467,18 @@
             <div class="package-card">
                 <div class="package-header">
                     <span>21 Days - 35GB</span>
+                    <i class="fas fa-crown"></i>
                 </div>
                 <div class="package-body">
                     <div class="package-features">
-                        <div>High-speed internet</div>
-                        <div>Works on all networks</div>
+                        <div><i class="fas fa-check"></i> High-speed satellite internet</div>
+                        <div><i class="fas fa-check"></i> Works on all networks</div>
+                        <div><i class="fas fa-check"></i> Low latency connection</div>
                     </div>
                     <div>
-                        <div class="package-price">Ksh 125</div>
-                        <button class="buy-btn" onclick="showPaymentModal('21 Days - 35GB (Ksh 125)', 125)">
-                            <i class="fas fa-shopping-cart"></i> Buy
+                        <div class="package-price">Ksh 125 <small>+ fees</small></div>
+                        <button class="buy-btn" onclick="confirmPayment('21 Days - 35GB (Ksh 125)', 'https://paystack.shop/pay/x12-x3b8r4')">
+                            <i class="fas fa-shopping-cart"></i> Buy Now
                         </button>
                     </div>
                 </div>
@@ -475,16 +488,18 @@
             <div class="package-card">
                 <div class="package-header">
                     <span>30 Days - 50GB</span>
+                    <i class="fas fa-gem"></i>
                 </div>
                 <div class="package-body">
                     <div class="package-features">
-                        <div>High-speed internet</div>
-                        <div>Works on all networks</div>
+                        <div><i class="fas fa-check"></i> High-speed satellite internet</div>
+                        <div><i class="fas fa-check"></i> Works on all networks</div>
+                        <div><i class="fas fa-check"></i> Low latency connection</div>
                     </div>
                     <div>
-                        <div class="package-price">Ksh 155</div>
-                        <button class="buy-btn" onclick="showPaymentModal('30 Days - 50GB (Ksh 155)', 155)">
-                            <i class="fas fa-shopping-cart"></i> Buy
+                        <div class="package-price">Ksh 155 <small>+ fees</small></div>
+                        <button class="buy-btn" onclick="confirmPayment('30 Days - 50GB (Ksh 155)', 'https://paystack.shop/pay/7y0tpyu0tc')">
+                            <i class="fas fa-shopping-cart"></i> Buy Now
                         </button>
                     </div>
                 </div>
@@ -493,17 +508,19 @@
             <!-- Package 6 -->
             <div class="package-card">
                 <div class="package-header">
-                    <span>60 DAYS - Unlimited</span>
+                    <span>60 Days - Unlimited</span>
+                    <i class="fas fa-infinity"></i>
                 </div>
                 <div class="package-body">
                     <div class="package-features">
-                        <div>Unlimited high-speed</div>
-                        <div>Works on all networks</div>
+                        <div><i class="fas fa-check"></i> Unlimited high-speed</div>
+                        <div><i class="fas fa-check"></i> Works on all networks</div>
+                        <div><i class="fas fa-check"></i> Premium low latency</div>
                     </div>
                     <div>
-                        <div class="package-price">Ksh 225</div>
-                        <button class="buy-btn" onclick="showPaymentModal('60 DAYS - Unlimited (Ksh 225)', 225)">
-                            <i class="fas fa-shopping-cart"></i> Buy
+                        <div class="package-price">Ksh 225 <small>+ fees</small></div>
+                        <button class="buy-btn" onclick="confirmPayment('60 Days - Unlimited (Ksh 225)', 'https://paystack.shop/pay/1925sgsspl')">
+                            <i class="fas fa-shopping-cart"></i> Buy Now
                         </button>
                     </div>
                 </div>
@@ -511,10 +528,19 @@
         </div>
         
         <div class="inquiry">
-            <p>In case of inquiry, contact us at:</p>
-            <a href="mailto:starrlinkhelp@gmail.com" class="email">email us</a>
-           
-
+            <p>Need assistance with your Starlink service?</p>
+            <div class="contact-methods">
+                <a href="mailto:starrlinkhelp@gmail.com" class="email">
+                    <i class="fas fa-envelope"></i> starrlinkhelp@gmail.com
+                </a>
+                <a href="https://wa.me/254748605610?text=Hello%20I%20need%20help%20with%20Starlink" class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp Support
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>&copy; 2023 Starlink Kenya. All rights reserved.</p>
         </div>
     </div>
 
@@ -522,72 +548,39 @@
     <div id="paymentModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>M-Pesa Payment Instructions</h2>
+                <h2>Confirm Package</h2>
                 <span class="close-modal" onclick="closeModal()">&times;</span>
             </div>
             <div class="modal-body">
-                <p>You have selected: <strong id="selectedPackage"></strong></p>
-                
-                <div class="payment-instructions">
-                    <p>Please follow these steps to complete your payment:</p>
-                    <ol>
-                        <li>Go to M-Pesa on your phone</li>
-                        <li>Select <strong>Lipa na M-Pesa</strong></li>
-                        <li>Select <strong>Buy Goods and Services</strong></li>
-                        <li>Enter Till Number: 
-                            <div class="till-number-container">
-                                <span class="till-number" id="tillNumber">4160709</span>
-                                <button class="copy-btn" onclick="copyTillNumber()">
-                                    <i class="far fa-copy"></i> Copy
-                                </button>
-                            </div>
-                        </li>
-                        <li>Enter Amount: <span class="till-number" id="paymentAmount"></span></li>
-                        <li>Enter your M-Pesa PIN</li>
-                        <li>Confirm and send payment</li>
-                    </ol>
-                    <p>Your package will be activated automatically after payment confirmation.</p>
-                </div>
-                
-                <button class="proceed-btn" onclick="closeModal()">
-                    <i class="fas fa-check"></i> I Understand
+                <p>You are about to purchase:</p>
+                <p><strong id="selectedPackage"></strong></p>
+                <p>You will be redirected to our secure payment gateway to complete your transaction.</p>
+                <button class="proceed-btn" id="proceedPaymentBtn">
+                    <i class="fas fa-arrow-right"></i> Proceed to Payment
                 </button>
             </div>
         </div>
     </div>
-    
-    <!-- Loading overlay -->
-    <div id="loadingOverlay" class="loading-overlay">
-        <div class="spinner"></div>
-        <div class="loading-text">Processing your request...</div>
-    </div>
 
     <script>
-        function showPaymentModal(packageName, amount) {
+        let paymentUrl = '';
+        
+        function confirmPayment(packageName, url) {
+            paymentUrl = url;
             document.getElementById('selectedPackage').textContent = packageName;
-            document.getElementById('paymentAmount').textContent = 'Ksh ' + amount;
             document.getElementById('paymentModal').style.display = 'flex';
+            
+            // Set up the proceed button
+            document.getElementById('proceedPaymentBtn').onclick = function() {
+                window.location.href = paymentUrl;
+            };
+            
+            // Track the package selection (you can replace with actual analytics)
+            console.log('Package selected:', packageName);
         }
         
         function closeModal() {
             document.getElementById('paymentModal').style.display = 'none';
-        }
-        
-        function copyTillNumber() {
-            const tillNumber = document.getElementById('tillNumber').textContent;
-            navigator.clipboard.writeText(tillNumber).then(() => {
-                // Change button text temporarily
-                const copyBtn = document.querySelector('.copy-btn');
-                const originalHtml = copyBtn.innerHTML;
-                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-                
-                // Revert after 2 seconds
-                setTimeout(() => {
-                    copyBtn.innerHTML = originalHtml;
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy text: ', err);
-            });
         }
         
         // Close modal when clicking outside
@@ -596,6 +589,17 @@
                 closeModal();
             }
         }
+        
+        // Add animation to package cards when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.package-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
     </script>
 </body>
-                        </html>
+</html>
