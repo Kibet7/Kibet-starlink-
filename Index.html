@@ -395,6 +395,25 @@
         </div>
         
         <div class="packages-container">
+            <!-- New Package: Unlimited 4 hours -->
+            <div class="package-card">
+                <div class="package-header">
+                    <span>4 Hours - Unlimited</span>
+                </div>
+                <div class="package-body">
+                    <div class="package-features">
+                        <div>Unlimited high-speed</div>
+                        <div>Works on all networks</div>
+                    </div>
+                    <div>
+                        <div class="package-price">Ksh 50</div>
+                        <button class="buy-btn" onclick="showPaymentModal('4 Hours - Unlimited (Ksh 50)', 50)">
+                            <i class="fas fa-shopping-cart"></i> Buy
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
             <!-- Package 1 -->
             <div class="package-card">
                 <div class="package-header">
@@ -544,7 +563,7 @@
                         </li>
                         <li>Enter Amount: <span class="till-number" id="paymentAmount"></span></li>
                         <li>Enter your M-Pesa PIN</li>
-                        <li>Confirm and send payment</li>
+                        <li>Confirm and send payment(NBS SOLUTION)</li>
                     </ol>
                     <p>Your package will be activated automatically after payment confirmation.</p>
                 </div>
@@ -579,7 +598,7 @@
                 // Change button text temporarily
                 const copyBtn = document.querySelector('.copy-btn');
                 const originalHtml = copyBtn.innerHTML;
-                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied! (NBS SOLUTION)';
                 
                 // Revert after 2 seconds
                 setTimeout(() => {
@@ -598,4 +617,4 @@
         }
     </script>
 </body>
-                        </html>
+</html>
