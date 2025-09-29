@@ -12,6 +12,7 @@
             --primary-dark: #0f7b0f;
             --primary-light: #e0f7da;
             --accent: #25D366;
+            --bookmark: #ff6b35;
             --dark: #000000;
             --light: #ffffff;
             --gray: #444444;
@@ -49,11 +50,52 @@
             padding: 20px;
             text-align: center;
             color: var(--light);
+            position: relative;
         }
         
         .header h1 {
             font-size: 26px;
             margin-bottom: 5px;
+        }
+        
+        .bookmark-container {
+            text-align: center;
+            padding: 10px 20px;
+            background-color: var(--primary-light);
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .bookmark-btn {
+            background-color: var(--bookmark);
+            color: var(--light);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+        
+        .bookmark-btn:hover {
+            background-color: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(255, 107, 53, 0.3);
+        }
+        
+        .bookmark-btn i {
+            margin-right: 8px;
+        }
+        
+        .bookmark-success {
+            background-color: var(--primary) !important;
+        }
+        
+        .bookmark-success i {
+            color: gold;
         }
         
         .payment-info {
@@ -370,6 +412,52 @@
             font-size: 12px;
         }
         
+        /* Android-specific bookmark instructions */
+        .android-bookmark-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .android-modal-content {
+            background-color: var(--light);
+            border-radius: 12px;
+            max-width: 400px;
+            width: 90%;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: modalOpen 0.3s forwards;
+            text-align: center;
+            padding: 20px;
+            color: var(--gray);
+        }
+        
+        .android-modal-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .android-modal-content ol {
+            text-align: left;
+            padding-left: 20px;
+            margin: 15px 0;
+        }
+        
+        .android-modal-content li {
+            margin-bottom: 10px;
+        }
+        
+        .android-modal-content .proceed-btn {
+            margin-top: 15px;
+        }
+        
         /* Responsive adjustments */
         @media (max-width: 480px) {
             .header h1 {
@@ -392,6 +480,13 @@
         <div class="header">
             <h1>Select a Package</h1>
             <div class="payment-info">Starlink Home <i>(Safaricom, Airtel, Telcom)</i></div>
+        </div>
+        
+        <!-- Bookmark Button -->
+        <div class="bookmark-container">
+            <button class="bookmark-btn" onclick="bookmarkPage()">
+                <i class="far fa-bookmark"></i> Bookmark This Page
+            </button>
         </div>
         
         <div class="packages-container">
@@ -532,8 +627,12 @@
         <div class="inquiry">
             <p>In case of inquiry, contact us at:</p>
             <a href="mailto:starrlinkhelp@gmail.com" class="email">email us</a>
-           
-
+            <p></p>
+            <a href="https://wa.me/2547106652643?text=Hi%20I%20need%20help%20with%20Starlink%s20services" 
+               class="whatsapp-btn" 
+               target="_blank">
+                <i class="fab fa-whatsapp"></i> Contact via WhatsApp
+            </a>
         </div>
     </div>
 
@@ -575,6 +674,24 @@
         </div>
     </div>
     
+    <!-- Android Bookmark Instructions Modal -->
+    <div id="androidBookmarkModal" class="android-bookmark-modal">
+        <div class="android-modal-content">
+            <h3>Add to Home Screen</h3>
+            <p>To bookmark this page on your Android device:</p>
+            <ol>
+                <li>Tap the <strong>three dots</strong> menu in your browser</li>
+                <li>Select <strong>"Add to Home screen"</strong></li>
+                <li>Confirm the bookmark name</li>
+                <li>Tap <strong>"Add"</strong> to finish</li>
+            </ol>
+            <p>This will create a shortcut on your home screen for quick access.</p>
+            <button class="proceed-btn" onclick="closeAndroidModal()">
+                <i class="fas fa-check"></i> Got It
+            </button>
+        </div>
+    </div>
+    
     <!-- Loading overlay -->
     <div id="loadingOverlay" class="loading-overlay">
         <div class="spinner"></div>
@@ -590,6 +707,10 @@
         
         function closeModal() {
             document.getElementById('paymentModal').style.display = 'none';
+        }
+        
+        function closeAndroidModal() {
+            document.getElementById('androidBookmarkModal').style.display = 'none';
         }
         
         function copyTillNumber() {
@@ -609,10 +730,107 @@
             });
         }
         
-        // Close modal when clicking outside
+        // Bookmark functionality optimized for Android
+        function bookmarkPage() {
+            const url = window.location.href;
+            const title = document.title;
+
+            // Check if we're on Android
+            const isAndroid = /Android/.test(navigator.userAgent);
+            
+            if (isAndroid) {
+                // For Android, show instructions for adding to home screen
+                document.getElementById('androidBookmarkModal').style.display = 'flex';
+                showBookmarkSuccess();
+            } else {
+                // For other devices, try to add bookmark automatically
+                if (window.sidebar && window.sidebar.addPanel) {
+                    // Firefox
+                    window.sidebar.addPanel(title, url, "");
+                    showBookmarkSuccess();
+                } else if (window.external && ('AddFavorite' in window.external)) {
+                    // IE
+                    window.external.AddFavorite(url, title);
+                    showBookmarkSuccess();
+                } else {
+                    // For other browsers, show instructions
+                    showBookmarkInstructions(url, title);
+                }
+            }
+        }
+
+        function showBookmarkSuccess() {
+            const btn = document.querySelector('.bookmark-btn');
+            const originalHTML = btn.innerHTML;
+            
+            btn.innerHTML = '<i class="fas fa-bookmark"></i> Bookmarked!';
+            btn.classList.add('bookmark-success');
+            
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.classList.remove('bookmark-success');
+            }, 2000);
+        }
+
+        function showBookmarkInstructions(url, title) {
+            // Create a modal with instructions
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.7);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+            `;
+            
+            modal.innerHTML = `
+                <div style="
+                    background: white;
+                    padding: 20px;
+                    border-radius: 12px;
+                    max-width: 400px;
+                    text-align: center;
+                    color: #333;
+                ">
+                    <h3>Bookmark This Page</h3>
+                    <p>Press <kbd>Ctrl+D</kbd> (Windows/Linux) or <kbd>Cmd+D</kbd> (Mac) to bookmark this page.</p>
+                    <button onclick="this.closest('div').parentElement.remove()" 
+                            style="
+                                background: var(--primary);
+                                color: white;
+                                border: none;
+                                padding: 10px 20px;
+                                border-radius: 6px;
+                                cursor: pointer;
+                                margin-top: 15px;
+                            ">
+                        Got It!
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    document.body.removeChild(modal);
+                }
+            });
+        }
+        
+        // Close modals when clicking outside
         window.onclick = function(event) {
             if (event.target == document.getElementById('paymentModal')) {
                 closeModal();
+            }
+            if (event.target == document.getElementById('androidBookmarkModal')) {
+                closeAndroidModal();
             }
         }
     </script>
