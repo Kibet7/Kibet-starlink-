@@ -1290,7 +1290,7 @@
                     <span>Service: LIVE</span>
                 </div>
                 <div class="server-stats">
-                    <span><i class="fas fa-users"></i> 2,458 Online Today</span>
+                    <span><i class="fas fa-users"></i> 890,498 Online Today</span>
                     <span><i class="fas fa-bolt"></i> 99.2% Uptime</span>
                 </div>
             </div>
@@ -1298,7 +1298,7 @@
             <!-- Activation Counter -->
             <div class="activation-counter">
                 <i class="fas fa-sync-alt"></i>
-                <span><strong id="activationCount">1,247</strong> bundles activated today</span>
+                <span><strong id="activationCount">33,242</strong> bundles activated today</span>
             </div>
             
             <div class="payment-info">High-Speed Satellite Internet <i>(All Networks)</i></div>
@@ -1568,16 +1568,16 @@
                 <div class="referral-leaderboard">
                     <div class="leaderboard-title">Top Referrers This Week</div>
                     <div class="leaderboard-item">
-                        <span class="leaderboard-rank">1. TechGuru</span>
-                        <span class="leaderboard-rewards">45 referrals - 1,125GB earned!</span>
+                        <span class="leaderboard-rank">1. Faith</span>
+                        <span class="leaderboard-rewards">45 referrals - 35GB earned!</span>
                     </div>
                     <div class="leaderboard-item">
-                        <span class="leaderboard-rank">2. NetMaster</span>
-                        <span class="leaderboard-rewards">32 referrals - 800GB earned!</span>
+                        <span class="leaderboard-rank">2. Abdul</span>
+                        <span class="leaderboard-rewards">32 referrals - 140GB earned!</span>
                     </div>
                     <div class="leaderboard-item">
-                        <span class="leaderboard-rank">3. BundleKing</span>
-                        <span class="leaderboard-rewards">28 referrals - 700GB earned!</span>
+                        <span class="leaderboard-rank">3. Waweru</span>
+                        <span class="leaderboard-rewards">28 referrals - 280GB earned!</span>
                     </div>
                 </div>
                 
@@ -1900,48 +1900,48 @@
                 copyBtn.innerHTML = originalText;
             }, 2000);
         }
-        
         function shareViaWhatsApp() {
-            const phoneNumber = document.getElementById('phoneNumber').value;
-            if (!validatePhoneNumber(phoneNumber)) {
-                alert('Please enter a valid phone number first');
-                return;
-            }
-            
-            const message = `Check out Starlink Internet Bundles! Get affordable high-speed internet. ${referralLink}`;
-            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-            
-            incrementShareCount();
-        }
-        
-        function shareViaSMS() {
-            const phoneNumber = document.getElementById('phoneNumber').value;
-            if (!validatePhoneNumber(phoneNumber)) {
-                alert('Please enter a valid phone number first');
-                return;
-            }
-            
-            const message = `Check out Starlink Internet Bundles! Get affordable high-speed internet. ${referralLink}`;
-            const smsUrl = `sms:?body=${encodeURIComponent(message)}`;
-            window.open(smsUrl, '_blank');
-            
-            incrementShareCount();
-        }
-        
-        function shareViaFacebook() {
-            const phoneNumber = document.getElementById('phoneNumber').value;
-            if (!validatePhoneNumber(phoneNumber)) {
-                alert('Please enter a valid phone number first');
-                return;
-            }
-            
-            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(referralLink)}`;
-            window.open(facebookUrl, '_blank', 'width=600,height=400');
-            
-            incrementShareCount();
-        }
-        
+    const phoneNumber = document.getElementById('phoneNumber').value;
+    if (!validatePhoneNumber(phoneNumber)) {
+        alert('Please enter a valid phone number first');
+        return;
+    }
+    
+    // Add newline character before the link
+    const message = `Check out Starlink Internet Bundles! Get affordable high-speed internet.\n\n${referralLink}`;
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+    
+    incrementShareCount();
+}
+
+function shareViaSMS() {
+    const phoneNumber = document.getElementById('phoneNumber').value;
+    if (!validatePhoneNumber(phoneNumber)) {
+        alert('Please enter a valid phone number first');
+        return;
+    }
+    
+    // Add newline character before the link
+    const message = `Check out Starlink Internet Bundles! Get affordable high-speed internet.\n\n${referralLink}`;
+    const smsUrl = `sms:${phoneNumber}?body=${encodeURIComponent(message)}`;
+    window.open(smsUrl, '_blank');
+    
+    incrementShareCount();
+}
+
+function shareViaFacebook() {
+    const phoneNumber = document.getElementById('phoneNumber').value;
+    if (!validatePhoneNumber(phoneNumber)) {
+        alert('Please enter a valid phone number first');
+        return;
+    }
+    
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(referralLink)}`;
+    window.open(facebookUrl, '_blank', 'width=600,height=400');
+    
+    incrementShareCount();
+}
         function validatePhoneNumber(phone) {
             // Simple validation for Kenyan phone numbers
             return /^(07|01)\d{8}$/.test(phone);
