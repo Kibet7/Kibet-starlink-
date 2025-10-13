@@ -1177,6 +1177,107 @@
             margin-top: 15px;
         }
         
+        /* NEW: Pop-up Ad Styles */
+        .popup-ad {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .popup-ad-content {
+            background-color: white;
+            border-radius: 16px;
+            max-width: 400px;
+            width: 100%;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: modalOpen 0.3s forwards;
+            position: relative;
+        }
+        
+        .popup-ad-header {
+            background: linear-gradient(135deg, #ff6b35, #ff8e53);
+            color: white;
+            padding: 15px 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .popup-ad-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            transition: all 0.2s;
+        }
+        
+        .popup-ad-close:hover {
+            transform: rotate(90deg);
+        }
+        
+        .popup-ad-body {
+            padding: 20px;
+            color: var(--gray);
+            text-align: center;
+        }
+        
+        .popup-ad-icon {
+            font-size: 48px;
+            color: #ff6b35;
+            margin-bottom: 15px;
+        }
+        
+        .popup-ad-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .popup-ad-description {
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        
+        .popup-ad-cta {
+            background: linear-gradient(135deg, #ff6b35, #ff8e53);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        
+        .popup-ad-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(255, 107, 53, 0.3);
+        }
+        
+        .popup-ad-footer {
+            font-size: 12px;
+            color: #888;
+            margin-top: 10px;
+        }
+        
         /* Responsive adjustments */
         @media (max-width: 480px) {
             .header h1 {
@@ -1233,6 +1334,10 @@
                 min-width: 100%;
                 margin-bottom: 5px;
             }
+            
+            .popup-ad-content {
+                margin: 10px;
+            }
         }
         
         @media (max-width: 320px) {
@@ -1251,12 +1356,42 @@
             .share-btn {
                 padding: 10px;
             }
+            
+            .popup-ad-body {
+                padding: 15px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Space Animation Background -->
     <div class="space-background" id="spaceBackground"></div>
+    
+    <!-- NEW: Pop-up Ad -->
+    <div id="popupAd" class="popup-ad">
+        <div class="popup-ad-content">
+            <div class="popup-ad-header">
+                <h3>Earn Money Online</h3>
+                <span class="popup-ad-close" onclick="closePopupAd()">&times;</span>
+            </div>
+            <div class="popup-ad-body">
+                <div class="popup-ad-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <h2 class="popup-ad-title">Get Paid for Surveys</h2>
+                <p class="popup-ad-description">
+                    Complete quick online surveys and get paid directly to your M-Pesa account. 
+                    No experience required. Start earning today!
+                </p>
+                <a href="https://quiz2mpesa.vercel.app" target="_blank" class="popup-ad-cta">
+                    <i class="fas fa-external-link-alt"></i> Start Earning Now
+                </a>
+                <p class="popup-ad-footer">
+                    * Payments are processed directly to M-Pesa within 24 hours
+                </p>
+            </div>
+        </div>
+    </div>
     
     <!-- Live Support Chat -->
     <div class="chat-toggle" onclick="toggleChat()">
@@ -1687,6 +1822,30 @@
     </div>
 
     <script>
+        // NEW: Pop-up Ad Functionality
+        function showPopupAd() {
+            // Check if user has already seen the ad in this session
+            if (!sessionStorage.getItem('popupAdShown')) {
+                // Show ad after a delay
+                setTimeout(() => {
+                    document.getElementById('popupAd').style.display = 'flex';
+                    sessionStorage.setItem('popupAdShown', 'true');
+                }, 3000); // Show after 3 seconds
+            }
+        }
+        
+        function closePopupAd() {
+            document.getElementById('popupAd').style.display = 'none';
+        }
+        
+        // Close popup when clicking outside
+        window.addEventListener('click', function(event) {
+            const popupAd = document.getElementById('popupAd');
+            if (event.target === popupAd) {
+                closePopupAd();
+            }
+        });
+        
         // Create space animation
         function createSpaceAnimation() {
             const spaceBackground = document.getElementById('spaceBackground');
@@ -2117,6 +2276,9 @@
             // Initialize activation counter with random starting point
             activationCount = Math.floor(Math.random() * 500) + 1000;
             document.getElementById('activationCount').textContent = activationCount.toLocaleString();
+            
+            // NEW: Show popup ad
+            showPopupAd();
         });
     </script>
 </body>
