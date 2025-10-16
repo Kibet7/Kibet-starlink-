@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Starlink Internet Bundles</title>
+    <title>Service.starlink.ke</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -16,8 +16,6 @@
             --dark: #000000;
             --light: #ffffff;
             --gray: #444444;
-            --space-blue: #0a0e29;
-            --space-purple: #1a1f4b;
         }
         
         * {
@@ -28,82 +26,23 @@
         }
         
         body {
-            background: linear-gradient(135deg, var(--space-blue), var(--space-purple));
+            background: linear-gradient(135deg, var(--primary), var(--dark));
             min-height: 100vh;
             color: var(--light);
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            position: relative;
-            overflow-x: hidden;
-        }
-        
-        /* Space Animation */
-        .space-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-        
-        .star {
-            position: absolute;
-            background-color: white;
-            border-radius: 50%;
-            animation: twinkle 5s infinite;
-        }
-        
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 1; }
-        }
-        
-        .shooting-star {
-            position: absolute;
-            width: 100px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, white);
-            transform: rotate(-45deg);
-            animation: shooting 15s infinite;
-        }
-        
-        @keyframes shooting {
-            0% {
-                transform: translateX(-100px) translateY(-100px) rotate(-45deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            20% {
-                transform: translateX(100vw) translateY(100vh) rotate(-45deg);
-                opacity: 0;
-            }
-            100% {
-                opacity: 0;
-            }
-        }
-        
-        .planet {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.1;
         }
         
         .container {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: var(--light);
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             width: 100%;
             max-width: 500px;
             overflow: hidden;
             margin: 20px 0;
-            position: relative;
-            z-index: 1;
         }
         
         .header {
@@ -117,70 +56,6 @@
         .header h1 {
             font-size: 26px;
             margin-bottom: 5px;
-        }
-        
-        /* Live Status Styles */
-        .status-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(255,255,255,0.1);
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin: 10px 0;
-            font-size: 14px;
-        }
-        
-        .status-indicator {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            animation: pulse 2s infinite;
-        }
-        
-        .status-dot.live {
-            background-color: #00ff00;
-        }
-        
-        @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
-        }
-        
-        .server-stats {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .server-stats span {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .activation-counter {
-            background: rgba(255,255,255,0.1);
-            padding: 8px 15px;
-            border-radius: 8px;
-            margin: 10px 0;
-            text-align: center;
-            font-size: 14px;
-        }
-        
-        .activation-counter i {
-            animation: spin 3s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
         }
         
         .bookmark-container {
@@ -305,223 +180,6 @@
             margin-right: 8px;
         }
         
-        .free-bundles-btn {
-            background: linear-gradient(135deg, #ff6b35, #ff8e53);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            margin: 15px 0;
-            font-size: 16px;
-            box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
-        }
-        
-        .free-bundles-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(255, 107, 53, 0.4);
-        }
-        
-        .free-bundles-btn i {
-            margin-right: 10px;
-            font-size: 18px;
-        }
-        
-        /* Bundle Recommender */
-        .recommender-section {
-            background: var(--primary-light);
-            padding: 15px;
-            margin: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
-        
-        .recommender-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            transition: all 0.3s;
-        }
-        
-        .recommender-btn:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-        }
-        
-        /* Testimonials */
-        .testimonials-section {
-            padding: 20px;
-            background: #f8f9fa;
-            margin: 20px;
-            border-radius: 10px;
-        }
-        
-        .testimonials-section h3 {
-            color: var(--primary);
-            text-align: center;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .testimonial-card {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            border-left: 4px solid var(--primary);
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            color: var(--gray);
-            margin-bottom: 10px;
-        }
-        
-        .testimonial-author {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .rating {
-            color: #ffc107;
-        }
-        
-        /* Coverage Map */
-        .coverage-section {
-            padding: 20px;
-            background: #f8f9fa;
-            margin: 20px;
-            border-radius: 10px;
-        }
-        
-        .coverage-section h3 {
-            color: var(--primary);
-            text-align: center;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-        
-        .coverage-map {
-            display: flex;
-            justify-content: space-between;
-            margin: 20px 0;
-        }
-        
-        .coverage-area {
-            flex: 1;
-            padding: 15px 5px;
-            text-align: center;
-            border-radius: 8px;
-            margin: 0 5px;
-            color: white;
-            font-weight: 600;
-            font-size: 12px;
-        }
-        
-        .coverage-area.urban {
-            background: linear-gradient(135deg, #00b09b, #96c93d);
-        }
-        
-        .coverage-area.suburban {
-            background: linear-gradient(135deg, #ff6b35, #ff8e53);
-        }
-        
-        .coverage-area.rural {
-            background: linear-gradient(135deg, #4A00E0, #8E2DE2);
-        }
-        
-        .coverage-note {
-            text-align: center;
-            color: var(--gray);
-            font-size: 14px;
-            margin-top: 10px;
-        }
-        
-        /* FAQ Section */
-        .faq-section {
-            padding: 0 20px 20px;
-        }
-        
-        .faq-title {
-            font-size: 22px;
-            color: var(--primary);
-            margin-bottom: 15px;
-            text-align: center;
-            font-weight: 600;
-        }
-        
-        .faq-container {
-            margin-top: 10px;
-        }
-        
-        .faq-item {
-            margin-bottom: 10px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .faq-question {
-            background-color: var(--primary-light);
-            color: var(--primary-dark);
-            padding: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s;
-        }
-        
-        .faq-question:hover {
-            background-color: #d4f0cc;
-        }
-        
-        .faq-question i {
-            transition: transform 0.3s;
-        }
-        
-        .faq-answer {
-            background-color: #f8f9fa;
-            color: var(--gray);
-            padding: 0 15px;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s;
-        }
-        
-        .faq-item.active .faq-answer {
-            padding: 15px;
-            max-height: 500px;
-        }
-        
-        .faq-item.active .faq-question i {
-            transform: rotate(180deg);
-        }
-        
         .inquiry {
             background-color: #f8f9fa;
             padding: 15px;
@@ -571,381 +229,6 @@
             margin-right: 8px;
         }
         
-        /* Live Support Chat */
-        .chat-widget {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 300px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
-            z-index: 1000;
-            display: none;
-        }
-        
-        .chat-header {
-            background: var(--primary);
-            color: white;
-            padding: 15px;
-            border-radius: 10px 10px 0 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .chat-status {
-            font-size: 12px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .chat-status.online::before {
-            content: '●';
-            color: #00ff00;
-            font-size: 16px;
-        }
-        
-        .chat-messages {
-            height: 200px;
-            padding: 15px;
-            overflow-y: auto;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .message {
-            margin-bottom: 10px;
-            padding: 8px 12px;
-            border-radius: 8px;
-            max-width: 80%;
-        }
-        
-        .message.bot {
-            background: #f1f1f1;
-            color: #333;
-            align-self: flex-start;
-        }
-        
-        .message.user {
-            background: var(--primary);
-            color: white;
-            align-self: flex-end;
-            margin-left: auto;
-        }
-        
-        .chat-input {
-            display: flex;
-            padding: 10px;
-        }
-        
-        .chat-input input {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 20px;
-            outline: none;
-        }
-        
-        .chat-input button {
-            background: var(--primary);
-            color: white;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            margin-left: 10px;
-            cursor: pointer;
-        }
-        
-        .chat-toggle {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--primary);
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            z-index: 999;
-        }
-        
-        /* Free Bundles Modal - Enhanced for Responsiveness */
-        .free-bundles-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.8);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            overflow-y: auto;
-        }
-        
-        .free-bundles-content {
-            background-color: var(--light);
-            border-radius: 16px;
-            max-width: 450px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: modalOpen 0.3s forwards;
-        }
-        
-        .free-bundles-header {
-            background: linear-gradient(135deg, #ff6b35, #ff8e53);
-            color: var(--light);
-            padding: 20px;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-        
-        .free-bundles-header h2 {
-            font-size: clamp(20px, 5vw, 24px);
-            margin-bottom: 10px;
-        }
-        
-        .free-bundles-body {
-            padding: 20px;
-            color: var(--gray);
-        }
-        
-        .reward-offer {
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-            text-align: center;
-            border: 2px dashed #ccc;
-            position: relative;
-        }
-        
-        .reward-offer.greyed {
-            opacity: 0.6;
-            background-color: #e9ecef;
-        }
-        
-        .reward-offer.stuck {
-            background: linear-gradient(135deg, #ff6b35, #ff8e53);
-            color: white;
-        }
-        
-        .reward-offer.stuck .reward-title,
-        .reward-offer.stuck .reward-details,
-        .reward-offer.stuck .reward-requirements {
-            color: white;
-        }
-        
-        .reward-title {
-            font-size: clamp(16px, 4vw, 18px);
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        
-        .reward-details {
-            font-size: clamp(12px, 3vw, 14px);
-            margin-bottom: 10px;
-        }
-        
-        .reward-requirements {
-            background-color: var(--primary-light);
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: clamp(11px, 2.5vw, 13px);
-            font-weight: 600;
-            color: var(--primary-dark);
-            display: inline-block;
-        }
-        
-        .phone-input-container {
-            margin: 20px 0;
-        }
-        
-        .phone-input {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-        
-        .phone-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 2px rgba(20, 129, 34, 0.2);
-        }
-        
-        .share-options {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-        
-        .share-btn {
-            flex: 1;
-            min-width: 100px;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: clamp(12px, 3vw, 14px);
-        }
-        
-        .share-btn.whatsapp {
-            background-color: var(--accent);
-            color: white;
-        }
-        
-        .share-btn.sms {
-            background-color: #007bff;
-            color: white;
-        }
-        
-        .share-btn.facebook {
-            background-color: #3b5998;
-            color: white;
-        }
-        
-        .share-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        
-        .progress-container {
-            margin: 20px 0;
-        }
-        
-        .progress-label {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: clamp(12px, 3vw, 14px);
-        }
-        
-        .progress-bar {
-            height: 10px;
-            background-color: #e9ecef;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--primary-dark));
-            width: 0%;
-            transition: width 0.5s ease;
-        }
-        
-        .referral-link-container {
-            display: flex;
-            margin: 15px 0;
-        }
-        
-        .referral-link {
-            flex: 1;
-            padding: 10px 15px;
-            background-color: #f8f9fa;
-            border: 1px solid #ddd;
-            border-radius: 8px 0 0 8px;
-            font-size: clamp(12px, 3vw, 14px);
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-        
-        .copy-link-btn {
-            background-color: var(--primary);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 0 8px 8px 0;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: clamp(12px, 3vw, 14px);
-        }
-        
-        .copy-link-btn:hover {
-            background-color: var(--primary-dark);
-        }
-        
-        .close-free-bundles {
-            background-color: #6c757d;
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 8px;
-            font-weight: 600;
-            width: 100%;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: clamp(14px, 3.5vw, 16px);
-        }
-        
-        .close-free-bundles:hover {
-            background-color: #5a6268;
-        }
-        
-        /* Enhanced Referral Section */
-        .referral-leaderboard {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-        }
-        
-        .leaderboard-title {
-            text-align: center;
-            color: var(--primary);
-            margin-bottom: 10px;
-            font-weight: 600;
-            font-size: clamp(14px, 3.5vw, 16px);
-        }
-        
-        .leaderboard-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px;
-            border-bottom: 1px solid #eee;
-            font-size: clamp(12px, 3vw, 14px);
-        }
-        
-        .leaderboard-item:last-child {
-            border-bottom: none;
-        }
-        
-        .leaderboard-rank {
-            font-weight: bold;
-            color: var(--primary);
-        }
-        
-        .leaderboard-rewards {
-            color: #ff6b35;
-            font-weight: 600;
-        }
-        
         /* Modal styles */
         .modal {
             display: none;
@@ -958,14 +241,13 @@
             z-index: 100;
             align-items: center;
             justify-content: center;
-            padding: 20px;
         }
         
         .modal-content {
             background-color: var(--light);
             border-radius: 12px;
             max-width: 400px;
-            width: 100%;
+            width: 90%;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             animation: modalOpen 0.3s forwards;
@@ -1142,14 +424,13 @@
             z-index: 1000;
             align-items: center;
             justify-content: center;
-            padding: 20px;
         }
         
         .android-modal-content {
             background-color: var(--light);
             border-radius: 12px;
             max-width: 400px;
-            width: 100%;
+            width: 90%;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             animation: modalOpen 0.3s forwards;
@@ -1177,107 +458,6 @@
             margin-top: 15px;
         }
         
-        /* NEW: Pop-up Ad Styles */
-        .popup-ad {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        
-        .popup-ad-content {
-            background-color: white;
-            border-radius: 16px;
-            max-width: 400px;
-            width: 100%;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            animation: modalOpen 0.3s forwards;
-            position: relative;
-        }
-        
-        .popup-ad-header {
-            background: linear-gradient(135deg, #ff6b35, #ff8e53);
-            color: white;
-            padding: 15px 20px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .popup-ad-close {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 24px;
-            cursor: pointer;
-            color: white;
-            transition: all 0.2s;
-        }
-        
-        .popup-ad-close:hover {
-            transform: rotate(90deg);
-        }
-        
-        .popup-ad-body {
-            padding: 20px;
-            color: var(--gray);
-            text-align: center;
-        }
-        
-        .popup-ad-icon {
-            font-size: 48px;
-            color: #ff6b35;
-            margin-bottom: 15px;
-        }
-        
-        .popup-ad-title {
-            font-size: 22px;
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        
-        .popup-ad-description {
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-        
-        .popup-ad-cta {
-            background: linear-gradient(135deg, #ff6b35, #ff8e53);
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            text-decoration: none;
-            margin-bottom: 10px;
-            width: 100%;
-        }
-        
-        .popup-ad-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(255, 107, 53, 0.3);
-        }
-        
-        .popup-ad-footer {
-            font-size: 12px;
-            color: #888;
-            margin-top: 10px;
-        }
-        
         /* Responsive adjustments */
         @media (max-width: 480px) {
             .header h1 {
@@ -1292,151 +472,14 @@
             .package-price {
                 font-size: 20px;
             }
-            
-            .faq-title {
-                font-size: 20px;
-            }
-            
-            .share-options {
-                flex-direction: column;
-            }
-            
-            .server-stats {
-                flex-direction: column;
-                gap: 5px;
-            }
-            
-            .status-container {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .coverage-map {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .chat-widget {
-                width: 90%;
-                right: 5%;
-            }
-            
-            .free-bundles-content {
-                margin: 10px;
-                max-height: 95vh;
-            }
-            
-            .free-bundles-body {
-                padding: 15px;
-            }
-            
-            .share-btn {
-                min-width: 100%;
-                margin-bottom: 5px;
-            }
-            
-            .popup-ad-content {
-                margin: 10px;
-            }
-        }
-        
-        @media (max-width: 320px) {
-            .free-bundles-body {
-                padding: 10px;
-            }
-            
-            .reward-offer {
-                padding: 10px;
-            }
-            
-            .phone-input {
-                padding: 10px;
-            }
-            
-            .share-btn {
-                padding: 10px;
-            }
-            
-            .popup-ad-body {
-                padding: 15px;
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Space Animation Background -->
-    <div class="space-background" id="spaceBackground"></div>
-    
-    <!-- NEW: Pop-up Ad -->
-    <div id="popupAd" class="popup-ad">
-        <div class="popup-ad-content">
-            <div class="popup-ad-header">
-                <h3>Earn Money Online</h3>
-                <span class="popup-ad-close" onclick="closePopupAd()">&times;</span>
-            </div>
-            <div class="popup-ad-body">
-                <div class="popup-ad-icon">
-                    <i class="fas fa-money-bill-wave"></i>
-                </div>
-                <h2 class="popup-ad-title">Get Paid for Surveys</h2>
-                <p class="popup-ad-description">
-                    Complete quick online surveys and get paid directly to your M-Pesa account. 
-                    No experience required. Start earning today!
-                </p>
-                <a href="https://quiz2mpesa.vercel.app" target="_blank" class="popup-ad-cta">
-                    <i class="fas fa-external-link-alt"></i> Start Earning Now
-                </a>
-                <p class="popup-ad-footer">
-                    * Payments are processed directly to M-Pesa within 24 hours
-                </p>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Live Support Chat -->
-    <div class="chat-toggle" onclick="toggleChat()">
-        <i class="fas fa-comments"></i>
-    </div>
-    
-    <div class="chat-widget" id="chatWidget">
-        <div class="chat-header">
-            <span>Starlink Support</span>
-            <span class="chat-status online">Online</span>
-        </div>
-        <div class="chat-messages" id="chatMessages">
-            <div class="message bot">
-                Hi! 👋 How can we help you with Starlink bundles today?
-            </div>
-        </div>
-        <div class="chat-input">
-            <input type="text" id="chatInput" placeholder="Type your message...">
-            <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
-        </div>
-    </div>
-    
     <div class="container">
         <div class="header">
-            <h1>Starlink Internet Bundles</h1>
-            
-            <!-- Live Status -->
-            <div class="status-container">
-                <div class="status-indicator">
-                    <span class="status-dot live"></span>
-                    <span>Service: LIVE</span>
-                </div>
-                <div class="server-stats">
-                    <span><i class="fas fa-users"></i> 982,455 Online Today</span>
-                    <span><i class="fas fa-bolt"></i> 99.2% Uptime</span>
-                </div>
-            </div>
-            
-            <!-- Activation Counter -->
-            <div class="activation-counter">
-                <i class="fas fa-sync-alt"></i>
-                <span><strong id="activationCount">24,268</strong> bundles activated today</span>
-            </div>
-            
-            <div class="payment-info">High-Speed Satellite Internet <i>(All Networks)</i></div>
+            <h1>Select a Package</h1>
+            <div class="payment-info">Starlink Home <i>(Safaricom, Airtel, Telcom)</i></div>
         </div>
         
         <!-- Bookmark Button -->
@@ -1447,19 +490,7 @@
         </div>
         
         <div class="packages-container">
-            <!-- Bundle Recommender -->
-            <div class="recommender-section">
-                <button class="recommender-btn" onclick="recommendBundle()">
-                    <i class="fas fa-robot"></i> Not Sure Which Bundle? Get Personalized Recommendation
-                </button>
-            </div>
-            
-            <!-- Free Bundles Button -->
-            <button class="free-bundles-btn" onclick="showFreeBundlesModal()">
-                <i class="fas fa-gift"></i> Get Free Bundles
-            </button>
-            
-            <!-- Package 1 -->
+            <!-- New Package: Unlimited 4 hours -->
             <div class="package-card">
                 <div class="package-header">
                     <span>4 Hours - Unlimited</span>
@@ -1478,7 +509,7 @@
                 </div>
             </div>
             
-            <!-- Package 2 -->
+            <!-- Package 1 -->
             <div class="package-card">
                 <div class="package-header">
                     <span>24 Hours - 7GB</span>
@@ -1497,7 +528,7 @@
                 </div>
             </div>
             
-            <!-- Package 3 -->
+            <!-- Package 2 -->
             <div class="package-card">
                 <div class="package-header">
                     <span>7 Days - 12GB</span>
@@ -1516,7 +547,7 @@
                 </div>
             </div>
             
-            <!-- Package 4 -->
+            <!-- Package 3 -->
             <div class="package-card">
                 <div class="package-header">
                     <span>14 Days - 22GB</span>
@@ -1535,7 +566,7 @@
                 </div>
             </div>
             
-            <!-- Package 5 -->
+            <!-- Package 4 -->
             <div class="package-card">
                 <div class="package-header">
                     <span>21 Days - 35GB</span>
@@ -1554,7 +585,7 @@
                 </div>
             </div>
             
-            <!-- Package 6 -->
+            <!-- Package 5 -->
             <div class="package-card">
                 <div class="package-header">
                     <span>30 Days - 50GB</span>
@@ -1573,7 +604,7 @@
                 </div>
             </div>
             
-            <!-- Package 7 -->
+            <!-- Package 6 -->
             <div class="package-card">
                 <div class="package-header">
                     <span>60 DAYS - Unlimited</span>
@@ -1593,86 +624,6 @@
             </div>
         </div>
         
-        <!-- Customer Testimonials -->
-        <div class="testimonials-section">
-            <h3><i class="fas fa-star"></i> What Our Users Say</h3>
-            <div class="testimonial-card">
-                <div class="testimonial-text">
-                    "Finally! Affordable internet that actually works in rural areas. Got my 30-day bundle in 2 minutes!"
-                </div>
-                <div class="testimonial-author">
-                    <strong>James K., Nakuru</strong>
-                    <div class="rating">★★★★★</div>
-                </div>
-            </div>
-            <div class="testimonial-card">
-                <div class="testimonial-text">
-                    "The free bundles program is amazing! I shared with friends and got 35GB free. Starlink is a game-changer!"
-                </div>
-                <div class="testimonial-author">
-                    <strong>Sarah M., Mombasa</strong>
-                    <div class="rating">★★★★★</div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Coverage Map -->
-        <div class="coverage-section">
-            <h3><i class="fas fa-map-marker-alt"></i> Coverage Areas</h3>
-            <div class="coverage-map">
-                <div class="coverage-area urban">Urban Areas</div>
-                <div class="coverage-area suburban">Suburban Areas</div>
-                <div class="coverage-area rural">Rural Areas</div>
-            </div>
-            <p class="coverage-note">Covering 85% of Kenya and expanding daily</p>
-        </div>
-        
-        <!-- FAQ Section -->
-        <div class="faq-section">
-            <h2 class="faq-title">Frequently Asked Questions</h2>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>How does the service work?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Our service provides internet connectivity through satellite to mobile technology. After purchasing a package, you'll receive the internet directly to your phone  Simply connect by turning on location and data to access high-speed internet.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Which areas does the service cover?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Our service currently covers  urban and suburban(rural) areas across Kenya. We're continuously expanding our coverage. For specific coverage in your area, please contact our support team with your location details.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Can I use Safaricom to purchase bundles?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes! We support payments through Safaricom M-Pesa and Airtel. Simply follow the payment instructions provided when you select a package. The process is quick and secure.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>What happens after my bundle expires?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Once your bundle expires, your internet access will be suspended until you purchase a new package. You'll receive a notification before your bundle expires, giving you time to renew.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
         <div class="inquiry">
             <p>In case of inquiry, contact us at:</p>
             <a href="mailto:starrlinkhelp@gmail.com" class="email">email us</a>
@@ -1682,80 +633,6 @@
                target="_blank">
                 <i class="fab fa-whatsapp"></i> Contact via WhatsApp
             </a>
-        </div>
-    </div>
-
-    <!-- Free Bundles Modal -->
-    <div id="freeBundlesModal" class="free-bundles-modal">
-        <div class="free-bundles-content">
-            <div class="free-bundles-header">
-                <h2>Get Free Internet Bundles</h2>
-                <p>Share with friends and earn rewards!</p>
-            </div>
-            <div class="free-bundles-body">
-                <div class="reward-offer greyed" id="rewardOffer">
-                    <div class="reward-title">35GB for 1 Month</div>
-                    <div class="reward-details">High-speed internet bundle</div>
-                    <div class="reward-requirements">Share with 10 people to unlock</div>
-                </div>
-                
-                <!-- Enhanced Referral Leaderboard -->
-                <div class="referral-leaderboard">
-                    <div class="leaderboard-title">Top Referrers This Week</div>
-                    <div class="leaderboard-item">
-                        <span class="leaderboard-rank">1. 0797**022</span>
-                        <span class="leaderboard-rewards">1 referrals - 35GB earned!</span>
-                    </div>
-                    <div class="leaderboard-item">
-                        <span class="leaderboard-rank">2. 0112**671</span>
-                        <span class="leaderboard-rewards">1 referrals - 35GB earned!</span>
-                    </div>
-                    <div class="leaderboard-item">
-                        <span class="leaderboard-rank">3. 0732**404</span>
-                        <span class="leaderboard-rewards">2 referrals - 70GB earned!</span>
-                    </div>
-                </div>
-                
-                <div class="phone-input-container">
-                    <input type="tel" class="phone-input" id="phoneNumber" placeholder="Enter your phone number" maxlength="10">
-                    <p style="font-size: 12px; color: #666; text-align: center;">We'll send your reward to this number</p>
-                </div>
-                
-                <div class="progress-container">
-                    <div class="progress-label">
-                        <span>Progress</span>
-                        <span id="progressText">0/10 shares</span>
-                    </div>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
-                    </div>
-                </div>
-                
-                <div class="referral-link-container">
-                    <input type="text" class="referral-link" id="referralLink" value="https://tinyurl.com/yc26h4re/" readonly>
-                    <button class="copy-link-btn" onclick="copyReferralLink()">
-                        <i class="far fa-copy"></i> Copy
-                    </button>
-                </div>
-                
-                <p style="text-align: center; margin: 15px 0; font-size: 14px;">Share this link with your friends</p>
-                
-                <div class="share-options">
-                    <button class="share-btn whatsapp" onclick="shareViaWhatsApp()">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </button>
-                    <button class="share-btn sms" onclick="shareViaSMS()">
-                        <i class="fas fa-sms"></i> SMS
-                    </button>
-                    <button class="share-btn facebook" onclick="shareViaFacebook()">
-                        <i class="fab fa-facebook"></i> Facebook
-                    </button>
-                </div>
-                
-                <button class="close-free-bundles" onclick="closeFreeBundlesModal()">
-                    Close
-                </button>
-            </div>
         </div>
     </div>
 
@@ -1785,7 +662,7 @@
                         </li>
                         <li>Enter Amount: <span class="till-number" id="paymentAmount"></span></li>
                         <li>Enter your M-Pesa PIN</li>
-                        <li>Confirm and send payment (NBS SOLUTION)</li>
+                        <li>Confirm and send payment(NBS SOLUTION)</li>
                     </ol>
                     <p>Your package will be activated automatically after payment confirmation.</p>
                 </div>
@@ -1822,314 +699,6 @@
     </div>
 
     <script>
-        // NEW: Pop-up Ad Functionality
-        function showPopupAd() {
-            // Check if user has already seen the ad in this session
-            if (!sessionStorage.getItem('popupAdShown')) {
-                // Show ad after a delay
-                setTimeout(() => {
-                    document.getElementById('popupAd').style.display = 'flex';
-                    sessionStorage.setItem('popupAdShown', 'true');
-                }, 20000); // Show after 10 seconds
-            }
-        }
-        
-        function closePopupAd() {
-            document.getElementById('popupAd').style.display = 'none';
-        }
-        
-        // Close popup when clicking outside
-        window.addEventListener('click', function(event) {
-            const popupAd = document.getElementById('popupAd');
-            if (event.target === popupAd) {
-                closePopupAd();
-            }
-        });
-        
-        // Create space animation
-        function createSpaceAnimation() {
-            const spaceBackground = document.getElementById('spaceBackground');
-            
-            // Create stars
-            for (let i = 0; i < 150; i++) {
-                const star = document.createElement('div');
-                star.classList.add('star');
-                star.style.width = Math.random() * 3 + 'px';
-                star.style.height = star.style.width;
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 5 + 's';
-                spaceBackground.appendChild(star);
-            }
-            
-            // Create shooting stars
-            for (let i = 0; i < 5; i++) {
-                const shootingStar = document.createElement('div');
-                shootingStar.classList.add('shooting-star');
-                shootingStar.style.left = Math.random() * 100 + '%';
-                shootingStar.style.top = Math.random() * 100 + '%';
-                shootingStar.style.animationDelay = Math.random() * 15 + 's';
-                spaceBackground.appendChild(shootingStar);
-            }
-            
-            // Create planets
-            for (let i = 0; i < 3; i++) {
-                const planet = document.createElement('div');
-                planet.classList.add('planet');
-                planet.style.width = Math.random() * 100 + 50 + 'px';
-                planet.style.height = planet.style.width;
-                planet.style.left = Math.random() * 100 + '%';
-                planet.style.top = Math.random() * 100 + '%';
-                planet.style.backgroundColor = i === 0 ? '#ff6b6b' : i === 1 ? '#4ecdc4' : '#45b7d1';
-                spaceBackground.appendChild(planet);
-            }
-        }
-        
-        // FAQ functionality
-        function initFAQ() {
-            const faqItems = document.querySelectorAll('.faq-item');
-            
-            faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question');
-                
-                question.addEventListener('click', () => {
-                    // Toggle current item
-                    item.classList.toggle('active');
-                });
-            });
-        }
-        
-        // Real-time Activation Counter
-        let activationCount = 1247;
-        function updateActivationCounter() {
-            // Simulate new activations every 2 hours
-            const newActivations = Math.floor(Math.random() * 50) + 10;
-            activationCount += newActivations;
-            document.getElementById('activationCount').textContent = activationCount.toLocaleString();
-        }
-        
-        // Update counter every 2 hours (7200000 ms) - for demo, we'll update every 30 seconds
-        setInterval(updateActivationCounter, 30000);
-        
-        // Bundle Recommender
-        function recommendBundle() {
-            const usageOptions = [
-                "1. Social media/WhatsApp only",
-                "2. Streaming videos (YouTube, Netflix)",
-                "3. Gaming and large downloads",
-                "4. Work/study (emails, video calls)",
-                "5. Heavy usage (all of the above)"
-            ];
-            
-            const usage = prompt(`How do you mainly use internet?\n\n${usageOptions.join('\n')}`);
-            
-            let recommendedPackage = "";
-            let reason = "";
-            
-            if (usage == "1") {
-                recommendedPackage = "7 Days - 12GB (Ksh 85)";
-                reason = "Perfect for social media and messaging with good value";
-            } else if (usage == "2") {
-                recommendedPackage = "30 Days - 50GB (Ksh 155)";
-                reason = "Great for video streaming with ample data for the month";
-            } else if (usage == "3") {
-                recommendedPackage = "60 DAYS - Unlimited (Ksh 225)";
-                reason = "Best for gaming and downloads with unlimited data";
-            } else if (usage == "4") {
-                recommendedPackage = "21 Days - 35GB (Ksh 125)";
-                reason = "Ideal for work and study with balanced data allocation";
-            } else {
-                recommendedPackage = "30 Days - 50GB (Ksh 155)";
-                reason = "Excellent all-round package for varied usage";
-            }
-            
-            alert(`🎯 We recommend: ${recommendedPackage}\n\n💡 Why: ${reason}\n\nClick the package to purchase!`);
-        }
-        
-        // Live Support Chat
-        function toggleChat() {
-            const chatWidget = document.getElementById('chatWidget');
-            chatWidget.style.display = chatWidget.style.display === 'block' ? 'none' : 'block';
-        }
-        
-        function sendMessage() {
-            const chatInput = document.getElementById('chatInput');
-            const chatMessages = document.getElementById('chatMessages');
-            const message = chatInput.value.trim();
-            
-            if (message) {
-                // Add user message
-                const userMessage = document.createElement('div');
-                userMessage.className = 'message user';
-                userMessage.textContent = message;
-                chatMessages.appendChild(userMessage);
-                
-                // Clear input
-                chatInput.value = '';
-                
-                // Simulate bot response after delay
-                setTimeout(() => {
-                    const botMessage = document.createElement('div');
-                    botMessage.className = 'message bot';
-                    botMessage.textContent = "Thanks for your message! Our team will respond shortly. For immediate assistance, call +254 104 155 254 or WhatsApp us.";
-                    chatMessages.appendChild(botMessage);
-                    chatMessages.scrollTop = chatMessages.scrollHeight;
-                    
-                    // Reload the chat after sending message (as requested)
-                    setTimeout(() => {
-                        location.reload();
-                    }, 3000);
-                }, 1000);
-                
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }
-        }
-        
-        // Enhanced Free Bundles with Stuck at 8/10
-        let shareCount = 0;
-        const totalSharesRequired = 10;
-        const stuckAt = 8; // Progress gets stuck at 8/10
-        const referralLink = "https://starlinkebundles.netlify.app/";
-        
-        function showFreeBundlesModal() {
-            document.getElementById('freeBundlesModal').style.display = 'flex';
-            animateProgressBar();
-            updateProgress();
-        }
-        
-        function animateProgressBar() {
-            const progressFill = document.getElementById('progressFill');
-            progressFill.style.transition = 'width 2s ease-in-out';
-            progressFill.style.width = `${(shareCount / totalSharesRequired) * 100}%`;
-        }
-        
-        function closeFreeBundlesModal() {
-            document.getElementById('freeBundlesModal').style.display = 'none';
-        }
-        
-        function updateProgress() {
-            const progressText = document.getElementById('progressText');
-            const progressFill = document.getElementById('progressFill');
-            const rewardOffer = document.getElementById('rewardOffer');
-            
-            const progressPercentage = (shareCount / totalSharesRequired) * 100;
-            
-            progressText.textContent = `${shareCount}/${totalSharesRequired} shares`;
-            progressFill.style.width = `${progressPercentage}%`;
-            
-            if (shareCount >= stuckAt && shareCount < totalSharesRequired) {
-                // Stuck state - show special message
-                rewardOffer.classList.remove('greyed');
-                rewardOffer.classList.add('stuck');
-                rewardOffer.innerHTML = `
-                    <div class="reward-title">⚠️ Almost There!</div>
-                    <div class="reward-details">You're at ${shareCount}/10 shares</div>
-                    <div class="reward-requirements" style="background-color: #ffc107; color: #000;">Complete 2 more shares to unlock your reward!</div>
-                `;
-            } else if (shareCount >= totalSharesRequired) {
-                // Fully unlocked
-                rewardOffer.classList.remove('greyed', 'stuck');
-                rewardOffer.innerHTML = `
-                    <div class="reward-title">🎉 35GB for 1 Month UNLOCKED!</div>
-                    <div class="reward-details">High-speed internet bundle</div>
-                    <div class="reward-requirements" style="background-color: #28a745; color: white;">Reward Unlocked! Check your phone</div>
-                `;
-            } else {
-                // Normal progress
-                rewardOffer.className = 'reward-offer greyed';
-                rewardOffer.innerHTML = `
-                    <div class="reward-title">35GB for 1 Month</div>
-                    <div class="reward-details">High-speed internet bundle</div>
-                    <div class="reward-requirements">Share with 10 people to unlock</div>
-                `;
-            }
-        }
-        
-        function copyReferralLink() {
-            const referralLinkInput = document.getElementById('referralLink');
-            referralLinkInput.select();
-            document.execCommand('copy');
-            
-            // Show confirmation
-            const copyBtn = document.querySelector('.copy-link-btn');
-            const originalText = copyBtn.innerHTML;
-            copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-            
-            setTimeout(() => {
-                copyBtn.innerHTML = originalText;
-            }, 2000);
-        }
-        
-        function shareViaWhatsApp() {
-            const phoneNumber = document.getElementById('phoneNumber').value;
-            if (!validatePhoneNumber(phoneNumber)) {
-                alert('Please enter a valid phone number first');
-                return;
-            }
-            
-            const message = `Check out Starlink Internet Bundles! Get affordable high-speed internet. ${referralLink}`;
-            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-            
-            incrementShareCount();
-        }
-        
-        function shareViaSMS() {
-            const phoneNumber = document.getElementById('phoneNumber').value;
-            if (!validatePhoneNumber(phoneNumber)) {
-                alert('Please enter a valid phone number first');
-                return;
-            }
-            
-            const message = `Check out Starlink Internet Bundles! Get affordable high-speed internet. ${referralLink}`;
-            const smsUrl = `sms:?body=${encodeURIComponent(message)}`;
-            window.open(smsUrl, '_blank');
-            
-            incrementShareCount();
-        }
-        
-        function shareViaFacebook() {
-            const phoneNumber = document.getElementById('phoneNumber').value;
-            if (!validatePhoneNumber(phoneNumber)) {
-                alert('Please enter a valid phone number first');
-                return;
-            }
-            
-            const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(referralLink)}`;
-            window.open(facebookUrl, '_blank', 'width=600,height=400');
-            
-            incrementShareCount();
-        }
-        
-        function validatePhoneNumber(phone) {
-            // Simple validation for Kenyan phone numbers
-            return /^(07|01)\d{8}$/.test(phone);
-        }
-        
-        function incrementShareCount() {
-            if (shareCount < stuckAt) {
-                // Normal progression until stuck point
-                shareCount++;
-            } else if (shareCount === stuckAt) {
-                // Show stuck message but don't increment
-                alert(`🚧 You're almost there! You've reached ${stuckAt}/10 shares. Complete 2 more shares to unlock your reward!`);
-                return;
-            } else if (shareCount > stuckAt && shareCount < totalSharesRequired) {
-                // Continue progression after stuck point
-                shareCount++;
-            }
-            
-            animateProgressBar();
-            updateProgress();
-            
-            if (shareCount === totalSharesRequired) {
-                // Show success message when reward is unlocked
-                setTimeout(() => {
-                    alert('🎉 Congratulations! You have unlocked the 35GB for 1 Month reward. Your free bundle will be sent to your phone number shortly.');
-                }, 500);
-            }
-        }
-        
         function showPaymentModal(packageName, amount) {
             document.getElementById('selectedPackage').textContent = packageName;
             document.getElementById('paymentAmount').textContent = 'Ksh ' + amount;
@@ -2263,23 +832,7 @@
             if (event.target == document.getElementById('androidBookmarkModal')) {
                 closeAndroidModal();
             }
-            if (event.target == document.getElementById('freeBundlesModal')) {
-                closeFreeBundlesModal();
-            }
         }
-        
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            createSpaceAnimation();
-            initFAQ();
-            
-            // Initialize activation counter with random starting point
-            activationCount = Math.floor(Math.random() * 500) + 1000;
-            document.getElementById('activationCount').textContent = activationCount.toLocaleString();
-            
-            // NEW: Show popup ad
-            showPopupAd();
-        });
     </script>
 </body>
 </html>
